@@ -32,6 +32,8 @@ Tested on the full **2025-26 regular season** (1,071 games), which the model nev
 | **Logistic regression (v1)** | **64.8%** (95% CI ≈ ±2.9%) |
 | Betting markets (reference) | ~68–70% |
 
+![Test accuracy comparison](results.png)
+
 **Key takeaways**
 - Even the low end of the confidence interval (~61.9%) clearly beats the baseline, so the gain isn't luck.
 - The model learned a positive intercept on its own, which is home-court advantage.
