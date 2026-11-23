@@ -30,6 +30,7 @@ Tested on the full **2025-26 regular season** (1,071 games), which the model nev
 |---|---|
 | Baseline: always pick the home team | 54.9% |
 | **Logistic regression (v1)** | **64.8%** (95% CI ≈ ±2.9%) |
+| Random forest (tuned on out-of-bag accuracy) | 64.7% |
 | Betting markets (reference) | ~68–70% |
 
 ![Test accuracy comparison](results.png)
@@ -38,6 +39,7 @@ Tested on the full **2025-26 regular season** (1,071 games), which the model nev
 - Even the low end of the confidence interval (~61.9%) clearly beats the baseline, so the gain isn't luck.
 - The model learned a positive intercept on its own, which is home-court advantage.
 - The full gap from baseline to Vegas is only ~14 points; v1 closes about two-thirds of it with 12 simple features.
+- A tuned random forest tied logistic regression (64.7% vs 64.8%, one game apart), so the more complex model didn't find anything the simple one missed. See `06_random_forest.ipynb`.
 
 ---
 
