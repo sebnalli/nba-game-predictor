@@ -7,7 +7,7 @@
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=white)
 ![Status](https://img.shields.io/badge/status-v1%20complete-brightgreen)
 
-A logistic regression model trained on four NBA seasons predicts the winner of an unseen season **64.8%** of the time, almost 10 points better than always picking the home team. Every feature uses only information available before tip-off.
+A logistic regression model trained on four NBA seasons predicts the winner of an unseen season **64.9%** of the time, almost 10 points better than always picking the home team. Every feature uses only information available before tip-off.
 
 ---
 
@@ -17,6 +17,7 @@ A logistic regression model trained on four NBA seasons predicts the winner of a
 - [Avoiding Data Leakage](#avoiding-data-leakage)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
+- [Next Steps](#next-steps)
 - [Limitations](#limitations)
 - [Acknowledgements](#acknowledgements)
 
@@ -29,17 +30,18 @@ Tested on the full **2025-26 regular season** (1,071 games), which the model nev
 | Model | Test accuracy |
 |---|---|
 | Baseline: always pick the home team | 54.9% |
-| **Logistic regression (v1)** | **64.8%** (95% CI ≈ ±2.9%) |
+| **Logistic regression (v2, scaled)** | **64.9%** (95% CI ≈ ±2.9%) |
 | Random forest (tuned on out-of-bag accuracy) | 64.7% |
 | Betting markets (reference) | ~68–70% |
 
 ![Test accuracy comparison](results.png)
 
 **Key takeaways**
-- Even the low end of the confidence interval (~61.9%) clearly beats the baseline, so the gain isn't luck.
+- Even the low end of the confidence interval (~62.0%) clearly beats the baseline, so the gain isn't luck.
 - The model learned a positive intercept on its own, which is home-court advantage.
-- The full gap from baseline to Vegas is only ~14 points; v1 closes about two-thirds of it with 12 simple features.
-- A tuned random forest tied logistic regression (64.7% vs 64.8%, one game apart), so the more complex model didn't find anything the simple one missed. See `06_random_forest.ipynb`.
+- The full gap from baseline to Vegas is only ~14 points; the model closes about two-thirds of it with 12 simple features.
+- A tuned random forest tied logistic regression (64.7% vs 64.9%, two games apart), so the more complex model didn't find anything the simple one missed. See `06_random_forest.ipynb`.
+- In the random forest, net rating (home and away) is the most important feature and rest days rank lowest.
 
 ---
 
@@ -116,6 +118,14 @@ pip install -r requirements.txt
 1. `02_pull_seasons.ipynb` → `data/games_2021_26.csv` (about a minute of API calls)
 2. `04_features.ipynb` → `data/features.csv`
 3. `05_model.ipynb` → trains the model and prints test accuracy
+
+---
+
+## Next Steps
+
+- **Elo ratings** as a feature, which would also cover early-season games.
+- **`min_periods`** on the rolling averages so the first games of a season aren't dropped.
+- **Live 2026-27 predictions** for upcoming games.
 
 ---
 
