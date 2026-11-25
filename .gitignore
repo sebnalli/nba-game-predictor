@@ -219,5 +219,8 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Data (recreate by running notebooks/01_pull_data.ipynb)
-data/.DS_Store
+# Data (recreate by running notebooks/02_pull_seasons.ipynb and 04_features.ipynb)
+data/
+
+# macOS
+.DS_Store
